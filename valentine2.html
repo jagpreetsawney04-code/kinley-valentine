@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>For Kinley 💖</title>
+
+<style>
+:root{
+  --bg1:#fff0f6;
+  --bg2:#f3f5ff;
+  --card:#ffffffdd;
+  --stroke:#00000012;
+  --text:#2a2430;
+  --muted:#6b6375;
+  --pink:#ff5fa2;
+  --lav:#7c6bff;
+  --good:#22c97a;
+  --shadow:0 20px 60px rgba(0,0,0,.15);
+  --r:22px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background:
+    radial-gradient(800px 400px at 15% 10%, #ff5fa233, transparent 60%),
+    radial-gradient(800px 400px at 85% 20%, #7c6bff33, transparent 60%),
+    linear-gradient(160deg, var(--bg1), var(--bg2));
+  color:var(--text);
+}
+.wrap{max-width:1000px;margin:auto;padding:20px}
+.top{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;
+}
+.pill{
+  padding:10px 14px;border-radius:999px;
+  background:#fff;border:1px solid var(--stroke);
+  box-shadow:0 12px 30px rgba(0,0,0,.06);
+  font-size:14px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--stroke);
+  border-radius:var(--r);
+  box-shadow:var(--shadow);
+  padding:20px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:16px;
+}
+@media(max-width:860px){
+  .grid{grid-template-columns:1fr}
+}
+.page{display:none}
+.page.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+h1{
+  font-size:clamp(26px,4vw,42px);
+  line-height:1.05;
+  margin:10px 0;
+}
+p{color:var(--muted);font-size:16px}
+.accent{
+  background:linear-gradient(90deg,var(--pink),var(--lav));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.nav{
+  margin-top:18px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.next,.back{
+  padding:12px 16px;
+  border-radius:16px;
+  border:none;
+  font-weight:800;
+  cursor:pointer;
+}
+.next{
+  background:linear-gradient(90deg,var(--pink),var(--lav));
+  color:#fff;
+}
+.back{
+  background:#fff;
+  border:1px solid var(--stroke);
+}
+.photoBox{
+  border-radius:20px;
+  border:1px solid var(--stroke);
+  background:#fff;
+  box-shadow:0 16px 40px rgba(0,0,0,.12);
+  overflow:hidden;
+  height:420px;
+}
+.photoBox img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:12px;
+}
+
+/* Valentine buttons */
+.choice{
+  margin-top:16px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  min-height:120px;
+  position:relative;
+}
+.cta{
+  padding:14px 18px;
+  border-radius:16px;
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
+}
+.yes{
+  background:linear-gradient(90deg,var(--good),#62ffb0);
+  color:#062012;
+  border:none;
+}
+.no{
+  background:#fff;
+  border:1px solid var(--stroke);
+  position:relative;
+}
+
+/* Modal */
+.modal{
+  position:fixed;inset:0;
+  display:none;place-items:center;
+  background:rgba(0,0,0,.45);
+}
+.modal.open{display:grid}
+.modal .inner{
+  background:#fff;
+  border-radius:24px;
+  padding:22px;
+  max-width:520px;
+  width:100%;
+  text-align:center;
+}
+.footer{
+  margin-top:14px;
+  text-align:center;
+  font-size:13px;
+  color:#6b6375;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="pill">💌 For <b>Kinley Chuki</b> • From <b>Jagpreet Singh</b></div>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+
+      <!-- LEFT TEXT -->
+      <div>
+        <!-- Page 1 -->
+        <section class="page active" data-page="1">
+          <h1>Hey you, <span class="accent">beautiful soul!</span></h1>
+          <p>I made something cute… just for you 💖</p>
+          <div class="nav">
+            <span></span>
+            <button class="next">Next ➜</button>
+          </div>
+        </section>
+
+        <!-- Page 2 -->
+        <section class="page" data-page="2">
+          <h1>Do you like <span class="accent">cute surprises</span>?</h1>
+          <p>Because I really enjoy making you smile.</p>
+          <div class="nav">
+            <button class="back">← Back</button>
+            <button class="next">Next ➜</button>
+          </div>
+        </section>
+
+        <!-- Page 3 -->
+        <section class="page" data-page="3">
+          <h1>Would you love <span class="accent">endless cuddles</span>?</h1>
+          <p>Warm hugs, cozy moments, and lots of love.</p>
+          <div class="nav">
+            <button class="back">← Back</button>
+            <button class="next">Next ➜</button>
+          </div>
+        </section>
+
+        <!-- Page 4 -->
+        <section class="page" data-page="4">
+          <h1>Would you be my <span class="accent">Valentine</span>? 💘</h1>
+          <p>No pressure… but also yes pressure 😭❤️</p>
+
+          <div class="choice" id="choiceArea">
+            <button class="cta yes" id="yesBtn">YES 💖</button>
+            <button class="cta no" id="noBtn">No 😅</button>
+          </div>
+
+          <div class="footer">
+            “Starry Eyes” — Cigarettes After Sex<br>
+            Anjoiiii
+          </div>
+
+          <div class="nav">
+            <button class="back">← Back</button>
+            <span></span>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT PHOTO -->
+      <div class="photoBox" id="photoSlot"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="inner">
+    <h2>YAYYYYY 💖</h2>
+    <p>You just made me the happiest person 😭❤️<br>Anjoiiii</p>
+    <button onclick="location.reload()" class="next">Restart</button>
+  </div>
+</div>
+
+<script>
+const pages=[...document.querySelectorAll(".page")];
+const photoSlot=document.getElementById("photoSlot");
+let current=1;
+
+const photos={
+  1:"photos/photo1.jpg",
+  2:"photos/photo2.jpg",
+  3:"photos/photo3.jpg",
+  4:"photos/photo4.png"
+};
+
+function render(){
+  pages.forEach(p=>p.classList.toggle("active",Number(p.dataset.page)===current));
+  photoSlot.innerHTML=`<img src="${photos[current]}" alt="photo">`;
+}
+render();
+
+document.addEventListener("click",e=>{
+  if(e.target.classList.contains("next")){current=Math.min(4,current+1);render();}
+  if(e.target.classList.contains("back")){current=Math.max(1,current-1);render();}
+});
+
+// NO button runs away
+const noBtn=document.getElementById("noBtn");
+const area=document.getElementById("choiceArea");
+
+["mouseenter","click","touchstart"].forEach(ev=>{
+  noBtn.addEventListener(ev,e=>{
+    e.preventDefault();
+    const x=Math.random()*(area.clientWidth-100);
+    const y=Math.random()*(area.clientHeight-40);
+    noBtn.style.position="absolute";
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
+  });
+});
+
+// YES opens modal
+document.getElementById("yesBtn").onclick=()=>{
+  document.getElementById("modal").classList.add("open");
+};
+</script>
+</body>
+</html>
