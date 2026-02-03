@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Kinley 💘</title>
+  <style>
+    :root{
+      --bg1:#fff2f7;
+      --bg2:#f2f5ff;
+      --card:#ffffffd6;
+      --stroke:#00000014;
+      --text:#241f2a;
+      --muted:#5d5568;
+      --pink:#ff4fa3;
+      --lav:#7b5cff;
+      --good:#20c97a;
+      --shadow: 0 20px 60px rgba(22, 16, 30, .16);
+      --r: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 10%, #ff4fa333, transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, #7b5cff2e, transparent 60%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:18px 14px 40px;}
+    .top{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;
+    }
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      background:#fff;
+      border:1px solid var(--stroke);
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+      font-size:14px;color:var(--muted);
+    }
+    .pill b{color:var(--text)}
+    .btn{
+      padding:10px 14px;border-radius:999px;border:1px solid var(--stroke);
+      background:#fff;cursor:pointer;font-weight:700;color:var(--text);
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+      transition:.2s transform;
+    }
+    .btn:hover{transform: translateY(-1px);}
+    .card{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+    }
+    .glow{
+      position:absolute;inset:-120px -160px auto auto;width:320px;height:320px;
+      background: radial-gradient(circle at 30% 30%, #ff4fa355, transparent 60%),
+                  radial-gradient(circle at 70% 70%, #7b5cff55, transparent 60%);
+      filter: blur(12px);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    /* “Pages” */
+    .pages{position:relative;min-height: 520px;}
+    .page{display:none;animation: pop .35s ease;}
+    .page.active{display:block;}
+    @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
+
+    .grid{
+      display:grid;grid-template-columns: 1.15fr .85fr;gap:14px;align-items:stretch;
+    }
+    @media (max-width:860px){.grid{grid-template-columns:1fr;} .pages{min-height: 640px;}}
+
+    h1{margin:8px 0 10px;font-size: clamp(28px, 4vw, 44px);line-height:1.05;letter-spacing:-.02em;}
+    h2{margin:6px 0 0;font-size: clamp(22px, 3vw, 30px);line-height:1.12;}
+    p{margin:10px 0 0;color:var(--muted);font-size:16px;line-height:1.55;}
+    .accent{
+      background: linear-gradient(90deg, var(--pink), var(--lav));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;
+    }
+    .dots{display:flex;gap:8px;align-items:center}
+    .dot{width:10px;height:10px;border-radius:999px;background:#00000014}
+    .dot.on{background: linear-gradient(90deg, var(--pink), var(--lav));}
+
+    .next{
+      padding:12px 16px;border-radius:16px;border:none;cursor:pointer;font-weight:900;
+      background: linear-gradient(90deg, var(--pink), var(--lav));
+      color:#fff;box-shadow: 0 16px 40px rgba(255,79,163,.22);
+      transition:.2s transform;
+    }
+    .next:hover{transform: translateY(-1px)}
+    .back{
+      padding:12px 14px;border-radius:16px;border:1px solid var(--stroke);
+      background:#fff;cursor:pointer;font-weight:900;
+      transition:.2s transform;
+    }
+    .back:hover{transform: translateY(-1px)}
+    .mini{
+      border:1px solid var(--stroke);
+      border-radius:18px;
+      background:#fff;
+      padding:14px;
+    }
+    .label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6a6275}
+    .value{margin-top:6px;font-weight:900;font-size:15px;color:#241f2a}
+
+    /* Animal “sticker” box */
+    .sticker{
+      border-radius:20px;
+      border:1px dashed #00000018;
+      background: #ffffffaa;
+      padding:16px;
+      display:flex;align-items:center;justify-content:center;
+      min-height: 360px;
+    }
+    .floaty{animation: float 3.4s ease-in-out infinite;}
+    @keyframes float{0%,100%{transform: translateY(0)}50%{transform: translateY(-8px)}}
+    .wiggle{animation: wig 1.8s ease-in-out infinite;}
+    @keyframes wig{0%,100%{transform: rotate(0deg)}50%{transform: rotate(2.5deg)}}
+    .pulse{animation: pul 1.5s ease-in-out infinite;}
+    @keyframes pul{0%,100%{transform: scale(1)}50%{transform: scale(1.04)}}
+
+    /* Valentine buttons */
+    .choiceWrap{
+      margin-top:14px;
+      display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+      position:relative;
+      padding:18px 10px;
+      border-radius:18px;
+      background:#ffffffb8;
+      border:1px solid var(--stroke);
+      overflow:hidden;
+      min-height: 130px;
+      align-items:center;
+    }
+    .cta{
+      padding:14px 18px;border-radius:16px;border:none;cursor:pointer;
+      font-weight:1000;font-size:16px;transition:.2s transform;
+    }
+    .yes{background: linear-gradient(90deg, var(--good), #62ffb0); color:#062012; box-shadow:0 18px 40px rgba(32,201,122,.18);}
+    .no{
+      background:#fff;border:1px solid var(--stroke);color:#2b2431;
+      position:relative;
+    }
+    .cta:hover{transform: translateY(-2px)}
+    .cta:active{transform: translateY(0px)}
+
+    /* Modal */
+    .modal{
+      position:fixed;inset:0;display:none;place-items:center;
+      background: rgba(0,0,0,.45);
+      padding:16px;z-index:50;
+    }
+    .modal.open{display:grid;}
+    .modal .inner{
+      max-width:560px;width:100%;
+      background:#ffffffee;border:1px solid var(--stroke);
+      border-radius:24px;padding:20px;box-shadow: var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .close{
+      position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:999px;
+      border:1px solid var(--stroke);background:#fff;cursor:pointer;font-weight:900;
+    }
+    .footer{
+      margin-top:12px;text-align:center;color:#6a6275;font-size:13px;
+    }
+
+    /* Confetti */
+    .confetti{
+      position:fixed;top:-10px;width:10px;height:14px;border-radius:2px;
+      z-index:60;pointer-events:none;animation: fall linear forwards;opacity:.95;
+    }
+    @keyframes fall{
+      to{ transform: translateY(110vh) rotate(680deg); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="pill">💌 For <b id="toName">Kinley Chuki</b> • From <b id="fromName">Jagpreet Singh</b></div>
+      <button class="btn" id="musicToggle" type="button">▶︎ Music</button>
+    </div>
+
+    <div class="card">
+      <div class="glow"></div>
+
+      <div class="grid">
+        <div class="pages">
+          <!-- Page 1 -->
+          <section class="page active" data-page="1">
+            <div class="pill" style="gap:8px">🐾 Page 1 of 4</div>
+            <h1>Hey you, <span class="accent">beautiful soul!</span></h1>
+            <p>
+              Kinley… I made something small but super cute — just for you.
+              (And yes, I’m smiling while making this.)
+            </p>
+
+            <div class="nav">
+              <div class="dots" aria-label="progress">
+                <span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+              <button class="next" data-next type="button">Next ➜</button>
+            </div>
+          </section>
+
+          <!-- Page 2 -->
+          <section class="page" data-page="2">
+            <div class="pill" style="gap:8px">🐶 Page 2 of 4</div>
+            <h1>Do you like <span class="accent">cute surprises</span>?</h1>
+            <p>
+              Because I might have a habit of doing sweet things…
+              especially when it’s for you.
+            </p>
+
+            <div class="nav">
+              <button class="back" data-back type="button">← Back</button>
+              <div class="dots">
+                <span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+              <button class="next" data-next type="button">Next ➜</button>
+            </div>
+          </section>
+
+          <!-- Page 3 -->
+          <section class="page" data-page="3">
+            <div class="pill" style="gap:8px">🐼 Page 3 of 4</div>
+            <h1>Would you love <span class="accent">endless cuddles</span>?</h1>
+            <p>
+              Like warm hugs, cozy vibes, and that calm feeling of being safe…
+              together.
+            </p>
+
+            <div class="nav">
+              <button class="back" data-back type="button">← Back</button>
+              <div class="dots">
+                <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span>
+              </div>
+              <button class="next" data-next type="button">Next ➜</button>
+            </div>
+          </section>
+
+          <!-- Page 4 -->
+          <section class="page" data-page="4">
+            <div class="pill" style="gap:8px">💘 Page 4 of 4</div>
+            <h1>Would you be my <span class="accent">Valentine</span>?</h1>
+            <p>
+              No pressure… but also… yes pressure 😭❤️
+            </p>
+
+            <div class="choiceWrap" id="choiceArea">
+              <button class="cta yes" id="yesBtn" type="button">YES 💖</button>
+              <button class="cta no" id="noBtn" type="button">No 😅</button>
+            </div>
+
+            <div class="mini" style="margin-top:14px;">
+              <div class="label">Song</div>
+              <div class="value">“Starry Eyes” — Cigarettes After Sex</div>
+              <p style="margin-top:8px">
+                (If you want, hit Music on top — or use the Spotify player on the right.)
+              </p>
+            </div>
+
+            <div class="nav">
+              <button class="back" data-back type="button">← Back</button>
+              <div class="dots">
+                <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span>
+              </div>
+              <span style="font-weight:900;color:#6a6275;">Anjoiiii</span>
+            </div>
+
+            <div class="footer">Made with 🫶 by Jagpreet Singh for Kinley Chuki • Anjoiiii</div>
+          </section>
+        </div>
+
+        <!-- Right side: Cute “animated-style” stickers + music -->
+        <div style="display:grid;gap:14px;">
+          <div class="sticker">
+            <!-- We swap the SVG depending on the page -->
+            <div id="stickerSlot" class="floaty"></div>
+          </div>
+
+          <div class="mini">
+            <div class="label">Music</div>
+            <div class="value">Spotify embed</div>
+            <p style="margin-top:8px">
+              Tap play here (works on most phones/PC):
+            </p>
+
+            <!-- Spotify Embed (official) -->
+            <iframe
+              style="border-radius:16px;border:1px solid var(--stroke);width:100%;height:152px;"
+              src="https://open.spotify.com/embed/track/3YL4zMqcyFu0OfLI1sZ66Z"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+
+            <p style="margin-top:10px;font-size:13px;">
+              Tip: If autoplay doesn’t work, use the button at the top — it’ll just show a friendly message.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional local audio (autoplay usually blocked; this toggles play/pause if you add a file) -->
+  <audio id="song" preload="auto" loop>
+    <!-- If you have an mp3 legally saved, put it in the same folder as index.html and uncomment:
+    <source src="starry-eyes.mp3" type="audio/mpeg">
+    -->
+  </audio>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="inner">
+      <div class="glow"></div>
+      <button class="close" id="closeModal" aria-label="Close">✕</button>
+      <h2 id="mTitle">YAYYYYY 💖</h2>
+      <p id="mText" style="margin-top:8px;">
+        Okay… now you’re officially my favorite person forever. Anjoiiii 😭❤️
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+        <button class="btn" id="copyBtn" type="button">Copy message</button>
+        <button class="btn" id="restartBtn" type="button">Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Basic config
+    const config = {
+      toName: "Kinley Chuki",
+      fromName: "Jagpreet Singh"
+    };
+
+    document.getElementById("toName").textContent = config.toName;
+    document.getElementById("fromName").textContent = config.fromName;
+
+    // “Pages” logic
+    const pages = [...document.querySelectorAll(".page")];
+    let current = 1;
+
+    function setPage(n){
+      current = Math.max(1, Math.min(4, n));
+      pages.forEach(p => p.classList.toggle("active", Number(p.dataset.page) === current));
+      renderSticker(current);
+      // Reset the NO button position each page load
+      if (current === 4) resetNoButton();
+    }
+
+    document.addEventListener("click", (e) => {
+      const next = e.target.closest("[data-next]");
+      const back = e.target.closest("[data-back]");
+      if (next) setPage(current + 1);
+      if (back) setPage(current - 1);
+    });
+
+    // Cute “animated-style” SVG stickers (no external images)
+    const stickerSlot = document.getElementById("stickerSlot");
+
+    function catWithBalloonSVG(){
+      return `
+      <svg class="wiggle" width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-label="Cute cat holding a love balloon">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff4fa3"/>
+            <stop offset="1" stop-color="#7b5cff"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(10,10)">
+          <!-- Balloon -->
+          <path d="M240 42c0 28-22 50-50 50s-50-22-50-50 22-50 50-50 50 22 50 50z" fill="url(#g1)" opacity="0.95"/>
+          <path d="M190 92c-6 20-10 35-10 52" stroke="#ff4fa3" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M180 144c-1 26-10 52-28 78" stroke="#7b5cff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- Heart highlight -->
+          <path d="M190 42c0-10 8-18 18-18s18 8 18 18c0 18-18 27-18 27s-18-9-18-27z" fill="#ffffffaa"/>
+
+          <!-- Cat body -->
+          <g transform="translate(35,115)">
+            <path d="M70 130c0-46 34-86 85-86s85 40 85 86c0 50-40 90-85 90s-85-40-85-90z" fill="#fff" stroke="#00000018" stroke-width="3"/>
+            <!-- Ears -->
+            <path d="M110 55 95 22 130 42Z" fill="#fff" stroke="#00000018" stroke-width="3" />
+            <path d="M190 55 205 22 170 42Z" fill="#fff" stroke="#00000018" stroke-width="3" />
+            <!-- Face -->
+            <circle cx="125" cy="100" r="8" fill="#2b2431"/>
+            <circle cx="185" cy="100" r="8" fill="#2b2431"/>
+            <path d="M150 110c8 0 14 6 14 12 0 10-10 18-14 18s-14-8-14-18c0-6 6-12 14-12z" fill="#ffb3d6" opacity=".9"/>
+            <path d="M115 125c-16 8-26 10-40 8" stroke="#2b2431" stroke-width="3" stroke-linecap="round"/>
+            <path d="M185 125c16 8 26 10 40 8" stroke="#2b2431" stroke-width="3" stroke-linecap="round"/>
+            <!-- Paw holding string -->
+            <path d="M195 165c18 4 34 12 42 22" stroke="#00000018" stroke-width="10" stroke-linecap="round"/>
+            <path d="M198 162c18 4 34 12 42 22" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+            <text x="150" y="252" text-anchor="middle" font-size="16" font-weight="900" fill="#6a6275">Hey you 💗</text>
+          </g>
+        </g>
+      </svg>`;
+    }
+
+    function cuteDogSVG(){
+      return `
+      <svg class="pulse" width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-label="Cute dog sticker">
+        <g transform="translate(20,30)">
+          <path d="M140 36c54 0 98 44 98 98s-44 98-98 98S42 188 42 134s44-98 98-98z" fill="#fff" stroke="#00000018" stroke-width="3"/>
+          <path d="M78 90c-28 10-44 34-44 56 0 30 16 54 44 64" fill="#ffe2b8" opacity=".9"/>
+          <path d="M202 90c28 10 44 34 44 56 0 30-16 54-44 64" fill="#ffe2b8" opacity=".9"/>
+          <circle cx="110" cy="135" r="9" fill="#2b2431"/>
+          <circle cx="170" cy="135" r="9" fill="#2b2431"/>
+          <path d="M140 145c10 0 18 7 18 14 0 11-13 20-18 20s-18-9-18-20c0-7 8-14 18-14z" fill="#2b2431"/>
+          <path d="M120 175c10 12 24 18 40 18s30-6 40-18" stroke="#ff4fa3" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M108 80c6-10 18-18 32-18 10 0 20 4 27 10 7-6 17-10 27-10 14 0 26 8 32 18" stroke="#7b5cff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".85"/>
+          <text x="140" y="265" text-anchor="middle" font-size="16" font-weight="900" fill="#6a6275">Cute surprise? 🐶</text>
+        </g>
+      </svg>`;
+    }
+
+    function pandaHugSVG(){
+      return `
+      <svg class="wiggle" width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-label="Two pandas hugging">
+        <defs>
+          <linearGradient id="p" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff4fa3"/>
+            <stop offset="1" stop-color="#7b5cff"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(20,35)">
+          <!-- Left panda -->
+          <g transform="translate(0,10)">
+            <path d="M90 40c42 0 76 34 76 76s-34 76-76 76S14 192 14 150s34-110 76-110z" fill="#fff" stroke="#00000018" stroke-width="3"/>
+            <ellipse cx="60" cy="110" rx="22" ry="18" fill="#2b2431" opacity=".9"/>
+            <ellipse cx="120" cy="110" rx="22" ry="18" fill="#2b2431" opacity=".9"/>
+            <circle cx="60" cy="112" r="6" fill="#fff"/>
+            <circle cx="120" cy="112" r="6" fill="#fff"/>
+            <circle cx="70" cy="150" r="7" fill="#2b2431"/>
+          </g>
+
+          <!-- Right panda -->
+          <g transform="translate(120,10)">
+            <path d="M90 40c42 0 76 34 76 76s-34 76-76 76S14 192 14 150s34-110 76-110z" fill="#fff" stroke="#00000018" stroke-width="3"/>
+            <ellipse cx="60" cy="110" rx="22" ry="18" fill="#2b2431" opacity=".9"/>
+            <ellipse cx="120" cy="110" rx="22" ry="18" fill="#2b2431" opacity=".9"/>
+            <circle cx="60" cy="112" r="6" fill="#fff"/>
+            <circle cx="120" cy="112" r="6" fill="#fff"/>
+            <circle cx="70" cy="150" r="7" fill="#2b2431"/>
+          </g>
+
+          <!-- Hug arms -->
+          <path d="M108 190c20-24 44-36 72-36s52 12 72 36" stroke="#00000018" stroke-width="22" stroke-linecap="round"/>
+          <path d="M108 190c20-24 44-36 72-36s52 12 72 36" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+
+          <!-- Hearts -->
+          <path d="M156 84c0-10 8-18 18-18s18 8 18 18c0 18-18 27-18 27s-18-9-18-27z" fill="url(#p)" opacity=".9"/>
+          <path d="M204 92c0-7 6-13 13-13s13 6 13 13c0 13-13 19-13 19s-13-6-13-19z" fill="#ff4fa3" opacity=".6"/>
+
+          <text x="150" y="265" text-anchor="middle" font-size="16" font-weight="900" fill="#6a6275">Endless cuddles 🐼</text>
+        </g>
+      </svg>`;
+    }
+
+    function valentineStickerSVG(){
+      return `
+      <svg class="floaty" width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-label="Valentine sticker">
+        <defs>
+          <linearGradient id="v" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff4fa3"/>
+            <stop offset="1" stop-color="#7b5cff"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(20,30)">
+          <path d="M140 48c30-26 68-20 86 4 20 26 12 64-20 92-24 22-66 52-66 52s-42-30-66-52c-32-28-40-66-20-92 18-24 56-30 86-4z"
+                fill="url(#v)" opacity=".9"/>
+          <path d="M85 78c10-14 30-18 46-8" stroke="#ffffffaa" stroke-width="6" stroke-linecap="round"/>
+          <text x="140" y="245" text-anchor="middle" font-size="16" font-weight="1000" fill="#6a6275">Be my Valentine? 💘</text>
+        </g>
+      </svg>`;
+    }
+
+    function renderSticker(page){
+      if (page === 1) stickerSlot.innerHTML = catWithBalloonSVG();
+      if (page === 2) stickerSlot.innerHTML = cuteDogSVG();
+      if (page === 3) stickerSlot.innerHTML = pandaHugSVG();
+      if (page === 4) stickerSlot.innerHTML = valentineStickerSVG();
+    }
+    renderSticker(1);
+
+    // “No” button runs away (every attempt)
+    const choiceArea = document.getElementById("choiceArea");
+    const noBtn = document.getElementById("noBtn");
+
+    function resetNoButton(){
+      noBtn.style.position = "relative";
+      noBtn.style.left = "0px";
+      noBtn.style.top = "0px";
+      noBtn.style.transform = "translate(0,0)";
+    }
+
+    function moveNoButton(){
+      const areaRect = choiceArea.getBoundingClientRect();
+      const btnRect  = noBtn.getBoundingClientRect();
+
+      // Make it absolute within the area after first move
+      noBtn.style.position = "absolute";
+
+      const padding = 10;
+      const maxX = Math.max(padding, areaRect.width  - btnRect.width  - padding);
+      const maxY = Math.max(padding, areaRect.height - btnRect.height - padding);
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top  = y + "px";
+    }
+
+    // Moves away when she tries (desktop + mobile)
+    ["mouseenter","pointerdown","touchstart","click"].forEach(evt => {
+      noBtn.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        moveNoButton();
+      }, {passive:false});
+    });
+
+    // Yes → confetti + modal
+    const yesBtn = document.getElementById("yesBtn");
+    const modal = document.getElementById("modal");
+    const closeModal = document.getElementById("closeModal");
+
+    function confettiBurst(count=130){
+      for (let i=0;i<count;i++){
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random()*100 + "vw";
+        c.style.animationDuration = (Math.random()*2.2 + 2.2) + "s";
+        c.style.background = `hsl(${Math.random()*360}, 90%, 65%)`;
+        c.style.width = (Math.random()*8 + 6) + "px";
+        c.style.height = (Math.random()*10 + 8) + "px";
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5200);
+      }
+    }
+
+    yesBtn?.addEventListener("click", () => {
+      confettiBurst();
+      modal.classList.add("open");
+    });
+
+    closeModal.addEventListener("click", () => modal.classList.remove("open"));
+    modal.addEventListener("click", (e) => { if (e.target === modal) modal.classList.remove("open"); });
+
+    // Copy message
+    const copyBtn = document.getElementById("copyBtn");
+    copyBtn.addEventListener("click", async () => {
+      const msg = `Kinley Chuki — would you be my Valentine? 💘 Anjoiiii`;
+      await navigator.clipboard.writeText(msg);
+      copyBtn.textContent = "Copied ✅";
+      setTimeout(()=> copyBtn.textContent="Copy message", 1600);
+    });
+
+    // Restart
+    document.getElementById("restartBtn").addEventListener("click", () => {
+      modal.classList.remove("open");
+      setPage(1);
+    });
+
+    // Music toggle (works only if you add your own mp3 file in the folder)
+    const song = document.getElementById("song");
+    const musicToggle = document.getElementById("musicToggle");
+    let playing = false;
+
+    musicToggle.addEventListener("click", async () => {
+      try{
+        if (!playing){
+          await song.play();
+          playing = true;
+          musicToggle.textContent = "⏸ Pause";
+        } else {
+          song.pause();
+          playing = false;
+          musicToggle.textContent = "▶︎ Music";
+        }
+      } catch(e){
+        alert("Music button works if you add a local MP3 (optional). Otherwise, use the Spotify player on the right 💗");
+      }
+    });
+  </script>
+</body>
+</html>
